@@ -19,77 +19,37 @@
  *
  ***************************************************************************/
 
+//@TODO: Cambiar constante
 if ( !defined('IN_PHPBB') )
 {
-	die("Hacking attempt");
+	exit("Nope");
 }
 
 //
-error_reporting  (E_ERROR | E_WARNING | E_PARSE); // This will NOT report uninitialized variables
-set_magic_quotes_runtime(0); // Disable magic_quotes_runtime
+//error_reporting  (E_ERROR | E_WARNING | E_PARSE); // This will NOT report uninitialized variables
+error_reporting(E_ALL); //Macho hardcore
+
+
+if(@ini_get('register_globals'))
+{
+    exit("Not allowed usage with register_globals");
+}
+
 
 // The following code (unsetting globals)
 // Thanks to Matt Kavanagh and Stefan Esser for providing feedback as well as patch files
 
-// PHP5 with register_long_arrays off?
-if (@phpversion() >= '5.0.0' && (!@ini_get('register_long_arrays') || @ini_get('register_long_arrays') == '0' || strtolower(@ini_get('register_long_arrays')) == 'off'))
-{
-	$HTTP_POST_VARS = $_POST;
-	$HTTP_GET_VARS = $_GET;
-	$HTTP_SERVER_VARS = $_SERVER;
-	$HTTP_COOKIE_VARS = $_COOKIE;
-	$HTTP_ENV_VARS = $_ENV;
-	$HTTP_POST_FILES = $_FILES;
-
-	// _SESSION is the only superglobal which is conditionally set
-	if (isset($_SESSION))
-	{
-		$HTTP_SESSION_VARS = $_SESSION;
-	}
-}
-
 // Protect against GLOBALS tricks
-if (isset($HTTP_POST_VARS['GLOBALS']) || isset($HTTP_POST_FILES['GLOBALS']) || isset($HTTP_GET_VARS['GLOBALS']) || isset($HTTP_COOKIE_VARS['GLOBALS']))
+if (isset($_POST['GLOBALS']) || isset($_POST['GLOBALS']) || isset($_GET['GLOBALS']) || isset($_COOKIE['GLOBALS']))
 {
-	die("Hacking attempt");
+	exit("NOP");
 }
 
 // Protect against HTTP_SESSION_VARS tricks
-if (isset($HTTP_SESSION_VARS) && !is_array($HTTP_SESSION_VARS))
+//@TODO: ¿Cambiar is_array?
+if (isset($_SESSION) && !is_array($_SESSION))
 {
-	die("Hacking attempt");
-}
-
-if (@ini_get('register_globals') == '1' || strtolower(@ini_get('register_globals')) == 'on')
-{
-	// PHP4+ path
-	$not_unset = array('HTTP_GET_VARS', 'HTTP_POST_VARS', 'HTTP_COOKIE_VARS', 'HTTP_SERVER_VARS', 'HTTP_SESSION_VARS', 'HTTP_ENV_VARS', 'HTTP_POST_FILES', 'phpEx', 'phpbb_root_path');
-
-	// Not only will array_merge give a warning if a parameter
-	// is not an array, it will actually fail. So we check if
-	// HTTP_SESSION_VARS has been initialised.
-	if (!isset($HTTP_SESSION_VARS) || !is_array($HTTP_SESSION_VARS))
-	{
-		$HTTP_SESSION_VARS = array();
-	}
-
-	// Merge all into one extremely huge array; unset
-	// this later
-	$input = array_merge($HTTP_GET_VARS, $HTTP_POST_VARS, $HTTP_COOKIE_VARS, $HTTP_SERVER_VARS, $HTTP_SESSION_VARS, $HTTP_ENV_VARS, $HTTP_POST_FILES);
-
-	unset($input['input']);
-	unset($input['not_unset']);
-
-	while (list($var,) = @each($input))
-	{
-		if (in_array($var, $not_unset))
-		{
-			die('Hacking attempt!');
-		}
-		unset($$var);
-	}
-
-	unset($input);
+	exit("Nope");
 }
 
 //
@@ -97,7 +57,8 @@ if (@ini_get('register_globals') == '1' || strtolower(@ini_get('register_globals
 // this is a security precaution to prevent someone
 // trying to break out of a SQL statement.
 //
-if( !get_magic_quotes_gpc() )
+//@TODO: Mejor sanitizar las entradas de input correctamente...
+/*if( !get_magic_quotes_gpc() )
 {
 	if( is_array($HTTP_GET_VARS) )
 	{
@@ -158,7 +119,7 @@ if( !get_magic_quotes_gpc() )
 		}
 		@reset($HTTP_COOKIE_VARS);
 	}
-}
+}*/
 
 //
 // Define some basic configuration arrays this also prevents
@@ -200,7 +161,7 @@ unset($dbpasswd);
 // even bother complaining ... go scream and shout at the idiots out there who feel
 // "clever" is doing harm rather than good ... karma is a great thing ... :)
 //
-$client_ip = ( !empty($HTTP_SERVER_VARS['REMOTE_ADDR']) ) ? $HTTP_SERVER_VARS['REMOTE_ADDR'] : ( ( !empty($HTTP_ENV_VARS['REMOTE_ADDR']) ) ? $HTTP_ENV_VARS['REMOTE_ADDR'] : getenv('REMOTE_ADDR') );
+$client_ip = ( !empty($_SERVER['REMOTE_ADDR']) ) ? $_SERVER['REMOTE_ADDR'] : ( ( !empty($_ENV['REMOTE_ADDR']) ) ? $_ENV['REMOTE_ADDR'] : getenv('REMOTE_ADDR') );
 $user_ip = encode_ip($client_ip);
 
 //
@@ -210,6 +171,7 @@ $user_ip = encode_ip($client_ip);
 //
 $sql = "SELECT *
 	FROM " . CONFIG_TABLE;
+
 if( !($result = $db->sql_query($sql)) )
 {
 	message_die(CRITICAL_ERROR, "Could not query config information", "", __LINE__, __FILE__, $sql);
@@ -222,7 +184,7 @@ while ( $row = $db->sql_fetchrow($result) )
 
 if (file_exists('install') || file_exists('contrib'))
 {
-	message_die(GENERAL_MESSAGE, 'Please_remove_install_contrib');
+	//message_die(GENERAL_MESSAGE, 'Please_remove_install_contrib');
 }
 
 //

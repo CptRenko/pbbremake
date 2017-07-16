@@ -7,8 +7,8 @@
  *   email                : support@phpbb.com
  *
  *   
- *   traducci&oacute;n al espa&ntilde;ol : Christian Gastrell (traducci&oacute;n y versi&oacute;n argentina)
- *                           Juan Manuel Mu&ntilde;oz (corrector y versi&oacute;n espa&ntilde;ola)
+ *   traducci&oacute;n al espa&ntilde;ol : Christian Gastrell (traducci&oacute;n y versión argentina)
+ *                           Juan Manuel Muñoz (corrector y versión española)
  *
  *   $Id: lang_faq.php,v 1.4.2.3 2002/12/18 15:40:20 psotfx Exp $
  *

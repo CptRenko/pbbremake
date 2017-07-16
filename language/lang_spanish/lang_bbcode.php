@@ -7,7 +7,7 @@
  *   email                : support@phpbb.com
  *
  *   
- *   traducción al espa&ntilde;ol : Christian Gastrell (traducción y versión argentina)
+ *   traducción al español : Christian Gastrell (traducción y versión argentina)
  *                           Juan Manuel Muñoz (corrector y versión española)
  
 *    			    

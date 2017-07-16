@@ -8,7 +8,7 @@
  *
  *   
  *   traducción al espa&ntilde;ol : Christian Gastrell (traducción y versión argentina)
- *                           Juan Manuel Mu&ntilde;oz (corrector y versión espa&ntilde;ola)
+ *                           Juan Manuel Muñoz (corrector y versión española)
  
 *    			    
  *

@@ -7,9 +7,9 @@
  *   email                : support@phpbb.com
  *
  *   
- *   traducci&oacute;n al espa&ntilde;ol : Christian Gastrell [CG_ar] (traducci&oacute;n y versi&oacute;n argentina)
- *                           Juan Manuel Mu&ntilde;oz [HuanManwe] (correcci&oacute;n y versi&oacute;n espa&ntilde;ola) 
- *			     Este &uacute;ltimo ayud&aacute;ndose puntualmente en el trabajo previo de: 
+ *   traducción al español : Christian Gastrell [CG_ar] (traducción y versión argentina)
+ *                           Juan Manuel Mu&ntilde;oz [HuanManwe] (corrección y versión española) 
+ *			     Este último ayudándose puntualmente en el trabajo previo de: 
  *			     Alexis Bellido Medina (alexis@ventanazul.com)
  *                           Mariano Martene (pacha@maestrosdelweb.com)
  *                           Angelika Lautz (alautz@promis.net)
@@ -34,7 +34,7 @@
 //	 Add your details here if wanted, e.g. Name, username, email address, website
 // 2002-08-27  Philip M. White        - fixed many grammar problems
 // 2005-03-18  Christian Gastrell		Translated to Argentinian Spanish
-// 2005-04-10  Juan Manuel Mu&ntilde;oz		Fixed and adapted to official Spanish
+// 2005-04-10  Juan Manuel Muñoz		Fixed and adapted to official Spanish
 
 //
 // The format of this file is ---> $lang['message'] = 'text';

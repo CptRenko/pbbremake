@@ -25,7 +25,7 @@
 		Fixed many minor grammatical mistakes
 	2005-03-18	Christian Gastrell
 		Translated to Argentinian Spanish
-	2005-03-27	Juan Manuel Mu&ntilde;oz (huanmanwe@yahoo.es)
+	2005-03-27	Juan Manuel Muñoz (huanmanwe@yahoo.es)
 		Made the 'oficial' Spanish adaptation
 */
 
@@ -381,7 +381,7 @@ $lang['Forum_desc'] = 'Descripci&oacute;n';
 $lang['Forum_status'] = 'Estado del Foro';
 $lang['Forum_pruning'] = 'Auto-vencimiento (pruning)';
 
-$lang['prune_freq'] = 'Verificar antig�edad de temas cada';
+$lang['prune_freq'] = 'Verificar antigüedad de temas cada';
 $lang['prune_days'] = 'Eliminar temas que no han recibido respuestas por espacio de';
 $lang['Set_prune_data'] = 'Ha activado auto-vencimiento (pruning) para este foro pero no ha indicado la cantidad de d&iacute;as para el vencimiento. Por favor, regrese e ind&iacute;quelo.';
 
